@@ -1,0 +1,20 @@
+{
+  "name": "shrink-images",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "sharp": "^0.31.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.2"
+  }
+}
