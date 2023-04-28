@@ -1,4 +1,5 @@
 const sharp = require('sharp');
+const  IMAGE_RESIZE_QUEUE = require('./constants').IMAGE_RESIZE_QUEUE;
 
 const minimize = async ({ originalName, path, sizes = [100, 200, 400] }) => {
   const image = sharp(`${path}/${originalName}`);
@@ -30,9 +31,9 @@ async function connectQueue() {
     connection = await amqp.connect('amqp://localhost:5672');
     channel = await connection.createChannel();
     console.log('connected');
-    await channel.assertQueue('test-queue-1');
+    await channel.assertQueue(IMAGE_RESIZE_QUEUE);
 
-    channel.consume('test-queue-1', async (data) => {
+    channel.consume(IMAGE_RESIZE_QUEUE, async (data) => {
       console.log(`${Buffer.from(data.content)}`);
       const content = JSON.parse(Buffer.from(data.content));
 
